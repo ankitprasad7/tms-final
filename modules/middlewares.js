@@ -1,14 +1,5 @@
-const password = (req, res, next) => {
-    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-      if (err) {
-        return res.send(401, err);
-      }
-      delete req.body.password;
-      req.body.password = hash;
-      next();
-    });
-  };
-  
+
+
   function validate(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
@@ -29,7 +20,7 @@ const password = (req, res, next) => {
       res.status(401).send("invalid token");
     }
   }
-    module.exports={password,
+    module.exports={
         validate,
         authToken
     }
